@@ -4,85 +4,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- css from: https://cdnjs.com/libraries/skeleton -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   -->
-  <!-- Font Awesome Cdn link -->
+
+  <!-- Font Awesome from CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <!-- my styles -->
+  <!-- my stylesheet -->
   <link rel="stylesheet" href="style.css">
   <title>Waterflow UI</title>
 </head>
 <body>
-  <!-- <h1>Waterflow UI</h1> -->
-
-  <!-- Jobs div self attempt -->
-  <!-- <div class="jobs">
-    <h1>Jobs</h1>
-    <div class="j_pending">
-      <p class="metrics">{{ mydata.j_pending }}</p><p>Pending</p>
-    </div>
-
-    <div class="fetching">
-      <p class="metrics">{{ mydata.fetching }}</p><p>Fetching DAG</p>
-    </div>
-
-    <div class="j_running">
-      <p class="metrics">{{ mydata.j_running }}</p><p>Running</p>
-    </div>
-
-    <div class="j_failed">
-      <p class="metrics">{{ mydata.j_failed }}</p><p>Failed</p>
-    </div>
-
-    <div class="j_succeeded">
-      <p class="metrics">{{ mydata.j_succeeded }}</p><p>Succeeded</p>
-    </div>
-  </div> -->
-
-  <!-- Tasks div -->
-  <!-- <div class="tasks">
-    <h1>Tasks</h1>
-    <div class="blocked">
-      <p>{{ mydata.blocked }}</p><p>Blocked</p>
-    </div>
-
-    <div class="t_pending">
-      <p>{{ mydata.t_pending }} Pending</p>
-    </div>
-
-    <div class="t_running">
-      <p>{{ mydata.t_running }} Running</p>
-    </div>
-
-    <div class="t_failed">
-      <p>{{ mydata.t_failed }} Failed</p>
-    </div>
-
-    <div class="t_succeeded">
-      <p>{{ mydata.t_succeeded }} Succeeded</p>
-    </div>
-  </div>
-  
-  <hr> 
-  <div class="filter">
-    <h1>Filter & Sort</h1>
-  </div> -->
-
-  <!-- Get Data button/Output -->
-  <div class="container">
-    <button id="button">Get Jobs Data</button>
-    <br><br>
-    <div id="output-jobs"></div>
-  </div>
-
+ 
   <!-- nav dashboard -->
-  <divc class="container">
+  <div class="container">
     <nav>
       <ul class="nobullets">
         <li><a href="#" class="logo">
-          <!-- https://uxwing.com/abort-icon/ -->
+          <!-- icons are from: https://uxwing.com/abort-icon/ -->
           <img src="/images/dashboard-icon.png" alt="dashboard-icon">
           <span class="nav-item">Waterflow</span>
         </a></li>
@@ -90,7 +27,8 @@
           <i class="fas fa-home"></i>
           <span class="nav-item">Home</span>
         </a></li>
-        <!-- <li><a href="">
+        <!--  user 
+          <li><a href="">
           <i class="fas fa-user"></i>
           <span class="nav-item">Profile</span>
         </a></li> -->
@@ -127,89 +65,98 @@
       <div class="main-top">
         <h1>Jobs</h1>
         <i class="fas fa-user-cog"></i>
+  
+        <!-- Get Data button/Output -->
+          <!-- <div class="container"> -->
+            <!-- <form> -->
+              <button class="refresh-all-button">Refresh All</button>
+            <!-- </form> -->
+            <!-- <br><br> -->
+            <!-- <div class="output-jobs-tasks"></div> -->
+          <!-- </div> -->
+          
       </div>
       <div class="main-jobs">
         <div class="card">
           <i class="fas fa-regular fa-clock"></i>
           <h3>Pending</h3>
-          <p>{1mln}</p>
-          <button>Refresh</button>
+          <h1 id="output-jobs-pending">...</h1>
+          <!-- <button id="reload">Refresh anly jobs</button> -->
         </div>
         <div class="card">
           <i class="fas fa-regular fa-download"></i>
           <h3>Fetching</h3>
-          <p>{1mln}</p>
-          <button>Refresh</button>
+          <h1 id="output-jobs-fetching">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-person-running"></i>
           <h3>running</h3>
-          <p>{1mln}</p>
-          <button>Refresh</button>
+          <h1 id="output-jobs-running">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-triangle-exclamation"></i>
           <h3>failed</h3>
-          <p>1mln</p>
-          <button>Refresh</button>
+          <h1 id="output-jobs-failed">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-check"></i>
           <h3>Succeeded</h3>
-          <p>1mln</p>
-          <button>Refresh</button>
+          <h1 id="output-jobs-succeeded">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
       </div>
     <!-- Square cards section - TASKS -->
     <!-- icons: https://fontawesome.com/search?q=ask&o=r -->
     <!-- <section class="main">
       <div class="main-top"> -->
-        <h1>Tasks</h1>
-        <!-- <i class="fas fa-user-cog"></i> -->
-      </div>
+      <h1>Tasks</h1>
+      <!-- </div> -->
       <div class="main-jobs">
         <div class="card">
           <i class="fas fa-regular fa-clock"></i>
           <h3>Pending</h3>
-          <p>{1mln}</p>
-          <button>Refresh</button>
+          <h1 id="output-tasks-pending">...</h1>
+          <!-- <button>Refresh only tasks</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-lock"></i>
           <h3>Blocked</h3>
-          <p>{1mln}</p>
-          <button>Refresh</button>
+          <h1 id="output-tasks-blocked">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-person-running"></i>
           <h3>running</h3>
-          <p>{1mln}</p>
-          <button>Refresh</button>
+          <h1 id="output-tasks-running">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-triangle-exclamation"></i>
           <h3>failed</h3>
-          <p>{1mln}</p>
-          <button>Refresh</button>
+          <h1 id="output-tasks-failed">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-check"></i>
           <h3>Succeeded</h3>
-          <p>1mln</p>
-          <button>Refresh</button>
+          <h1 id="output-tasks-succeeded">...</h1>
+          <!-- <button>Refresh</button> -->
         </div>
       </div>
-      <!-- Courses -> filters -->
-      <section class="main-course">
+      <!-- filters and sort section: todo -->
+      <!-- <section class="main-filter">
         <h1>Filters and Sort</h1>
-        <div class="course-box">
+        <div class="filter-box">
           <ul>
             <li class="active">In progress</li>
             <li>graphs</li>
             <li>analytics</li>
             <li>finished</li>
           </ul>
-          <div class="course">
+          <div class="filter">
             <div class="box">
               <h3>Pending</h3>
               <p>80% - progress</p>
@@ -228,11 +175,11 @@
               <button>filter</button>
               <i class="fab">3456</i>
             </div>
-          </div>
+          </div> -->
 
-        </div>
-      </section>
-    </section>
+        <!-- </div> -->
+      <!-- </section> -->
+    <!-- </section> -->
   </div>
 
   <script src="app.js"></script>

@@ -93,6 +93,11 @@ a:hover {
   color: rgb(110, 109, 109);
   cursor: pointer;
 }
+.main-top button {
+  position: absolute;
+  right: 89px;
+  cursor: pointer;
+}
 .main-jobs {
   display: flex;
   margin-top: 20px;
@@ -129,13 +134,20 @@ a:hover {
   font-size: 22px;
   padding: 10px;
 }
-
-/* Courses -> filters */
-.main-course {
+/* refresh-all-button */
+.main .main-top button {
+  background: orangered;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+/* filters */
+.main-filter {
   margin-top: 20px;
   text-transform: capitalize;
 }
-.course-box{
+.filter-box{
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -143,20 +155,20 @@ a:hover {
   border-radius: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
-.course-box ul{
+.filter-box ul{
  list-style: none;
  display: flex;
 }
-.course-box ul li{
+.filter-box ul li{
   margin: 10px;
   color: gray;
   cursor: pointer;
 }
-.course-box ul .active{
+.filter-box ul .active{
   color: #000;
   border-bottom: 1px solid #000;
 }
-.course-box .course{
+.filter-box .filter{
   display: flex;
 }
 .box {
