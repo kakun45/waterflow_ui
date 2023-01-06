@@ -18,10 +18,17 @@ window.addEventListener("load", getData, (event) => {
 document.querySelector('.refresh-all-button').addEventListener('click', getData);
 
 // AUTORefresh, in MILISECONDS
-// setInterval(function() {
-//   console.log("TEST");
-//   document.querySelector(".fas fa-user-cog").innerHTML += 'Hello'
-// }, REFRESH_INTERVAL_MS);
+setInterval(function() {
+  console.log("just refreshed");
+  const mock_event = new Object();
+  mock_event.preventDefault = function() {};
+  getData(mock_event)
+  document.getElementById("time").textContent = `Last refreshed: ${new Date()}`;
+}, REFRESH_INTERVAL_MS);
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 // working 2022/01/04
 function getData(e) { 
@@ -41,15 +48,15 @@ function getData(e) {
       let output  = '';
       const response = JSON.parse(this.responseText);
       if (typeof response === 'object') {
-        output = `<h1>${response.pending_count}</h1>`;
+        output = `<h1>${numberWithCommas(response.pending_count)}</h1>`;
         document.querySelector("#output-jobs-pending").innerHTML = output;
-        output = `<h1>${response.fetching_count}</h1>`;
+        output = `<h1>${numberWithCommas(response.fetching_count)}</h1>`;
         document.querySelector("#output-jobs-fetching").innerHTML = output;
-        output = `<h1>${response.running_count}</h1>`;
+        output = `<h1>${numberWithCommas(response.running_count)}</h1>`;
         document.querySelector("#output-jobs-running").innerHTML = output;
-        output = `<h1>${response.failed}</h1>`;
+        output = `<h1>${numberWithCommas(response.failed)}</h1>`;
         document.querySelector("#output-jobs-failed").innerHTML = output;
-        output = `<h1>${response.succeeded}</h1>`;
+        output = `<h1>${numberWithCommas(response.succeeded)}</h1>`;
         document.querySelector("#output-jobs-succeeded").innerHTML = output;
         } else {
         output += `<p>JSON Data is invalid</p>`;
@@ -75,15 +82,16 @@ function getData(e) {
     }
     const response_tasks = JSON.parse(this.responseText);
     if (typeof response_tasks === 'object') {
-      document.querySelector("#output-tasks-pending").innerHTML = `<h1>${response_tasks.pending_count}</h1>`;
-      document.querySelector("#output-tasks-blocked").innerHTML = `<h1>${response_tasks.blocked_count}</h1>`;
-      document.querySelector("#output-tasks-running").innerHTML = `<h1>${response_tasks.running_count}</h1>`;
-      document.querySelector("#output-tasks-failed").innerHTML = `<h1>${response_tasks.failed_count}</h1>`;
-      document.querySelector("#output-tasks-succeeded").innerHTML = `<h1>${response_tasks.succeeded_count}</h1>`;
+      document.querySelector("#output-tasks-blocked").innerHTML = `<h1>${numberWithCommas(response_tasks.blocked_count)}</h1>`;
+      document.querySelector("#output-tasks-pending").innerHTML = `<h1>${numberWithCommas(response_tasks.pending_count)}</h1>`;
+      document.querySelector("#output-tasks-running").innerHTML = `<h1>${numberWithCommas(response_tasks.running_count)}</h1>`;
+      document.querySelector("#output-tasks-failed").innerHTML = `<h1>${numberWithCommas(response_tasks.failed_count)}</h1>`;
+      document.querySelector("#output-tasks-succeeded").innerHTML = `<h1>${numberWithCommas(response_tasks.succeeded_count)}</h1>`;
     } else {
       document.querySelector("#output-tasks-pending").innerHTML = `<p>JSON Data is invalid</p>`;
     }
   }
+  document.getElementById("time").textContent = `Last refreshed: ${new Date()}`;
   xhr_tasks.send();
 
   e.preventDefault();  

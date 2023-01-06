@@ -32,7 +32,7 @@
           <i class="fas fa-user"></i>
           <span class="nav-item">Profile</span>
         </a></li> -->
-        <li><a href="">
+        <!--<li><a href="">
           <i class="fas fa-solid fa-diagram-project"></i>
           <span class="nav-item">Jobs</span>
         </a></li>
@@ -40,7 +40,7 @@
           <i class="fas fa-tasks"></i>
           <span class="nav-item">Tasks</span>
         </a></li>
-        <li><a href="">
+         <li><a href="">
           <i class="fas fa-chart-bar"></i>
           <span class="nav-item">Analytics</span>
         </a></li>
@@ -55,7 +55,7 @@
         <li><a href="" class="logout">
           <i class="fas fa-sign-out-alt"></i>
           <span class="nav-item">Logout</span>
-        </a></li>
+        </a></li> -->
       </ul>
     </nav>
     
@@ -65,15 +65,10 @@
       <div class="main-top">
         <h1>Jobs</h1>
         <i class="fas fa-user-cog"></i>
-  
+        <div id="time" >Last refreshed -:- </div>
         <!-- Get Data button/Output -->
-          <!-- <div class="container"> -->
-            <!-- <form> -->
-              <button class="refresh-all-button">Refresh All</button>
-            <!-- </form> -->
-            <!-- <br><br> -->
-            <!-- <div class="output-jobs-tasks"></div> -->
-          <!-- </div> -->
+        <button class="refresh-all-button">Refresh All</button>
+
           
       </div>
       <div class="main-jobs">
@@ -114,18 +109,19 @@
       <div class="main-top"> -->
       <h1>Tasks</h1>
       <!-- </div> -->
+      
       <div class="main-jobs">
-        <div class="card">
-          <i class="fas fa-regular fa-clock"></i>
-          <h3>Pending</h3>
-          <h1 id="output-tasks-pending">...</h1>
-          <!-- <button>Refresh only tasks</button> -->
-        </div>
         <div class="card">
           <i class="fas fa-solid fa-lock"></i>
           <h3>Blocked</h3>
           <h1 id="output-tasks-blocked">...</h1>
           <!-- <button>Refresh</button> -->
+        </div>
+        <div class="card">
+          <i class="fas fa-regular fa-clock"></i>
+          <h3>Pending</h3>
+          <h1 id="output-tasks-pending">...</h1>
+          <!-- <button>Refresh only tasks</button> -->
         </div>
         <div class="card">
           <i class="fas fa-solid fa-person-running"></i>

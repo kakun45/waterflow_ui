@@ -98,6 +98,13 @@ a:hover {
   right: 89px;
   cursor: pointer;
 }
+.main-top #time {
+  color: rgb(110, 109, 109);
+  top: 23px;
+  position: absolute;
+  right: 209px;
+  cursor: pointer;
+}
 .main-jobs {
   display: flex;
   margin-top: 20px;
